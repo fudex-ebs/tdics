@@ -11,15 +11,15 @@ class Answer extends BaseModel
         'most',
         'least',
         'quiz_id',
-        'question_id'
+        'dick_question_id'
     ];
     public function quiz()
     {
         return $this->belongsTo('App\User');
     }
 
-    public function question()
+    public function dick_question()
     {
-        return $this->belongsTo('App\Question');
+        return $this->belongsTo('App\DiscQuestion');
     }
 }

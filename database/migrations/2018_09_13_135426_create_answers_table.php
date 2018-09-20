@@ -15,6 +15,11 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('slug');
+            $table->char('most');
+            $table->char('least');
+            $table->integer('quiz_id');
+            $table->integer('dics_question_id');
             $table->timestamps();
         });
     }

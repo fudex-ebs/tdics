@@ -2,84 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Quiz;
 use Illuminate\Http\Request;
+use App\Quiz;
+use Auth;
 
 class QuizController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    // get all created quezzes of a user 
+    public function CreatedQuizzes(){
+        $quizzes = Auth::user()->created_quizzes;
+        return view('quiz.created_index',['quizzes'=>$quizzes]);
+    }
+    // create and store new quiz 
+    public function StoreQuiz(Request $request){
+        $quiz = Quiz::create(['used'=>false,'slug'=> uniqid(),'quizmaster_id' => Auth::user()->id]);
+        return redirect()->back();
+    }
+    // get all answered quezzes of a user 
+    public function AnsweredQuizzes(){
+        $quizzes = Auth::user()->answered_quizzes;
+        return view('quiz.answered_index',['quizzes'=>$quizzes]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Quiz  $quiz
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Quiz $quiz)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Quiz  $quiz
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Quiz $quiz)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Quiz  $quiz
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Quiz $quiz)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Quiz  $quiz
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Quiz $quiz)
-    {
-        //
-    }
 }

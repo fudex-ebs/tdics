@@ -4,13 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends BaseModel
+class DicsQuestion extends BaseModel
 {
 	public $timestamps = true;
 	protected $fillable = [
         'slug',
-        'content_ar',
-        'content_en',
         'option_d_ar',
         'option_d_en',
         'option_i_ar',
@@ -23,6 +21,7 @@ class Question extends BaseModel
     ];
 
     protected $rules = [
+        
     ];
 
     protected $messages = [

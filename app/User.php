@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role'
     ];
 
     /**
@@ -28,8 +28,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function quiz()
+    public function created_quizzes()
     {
-        return $this->hasMany('App\Quiz');
+        return $this->hasMany('App\Quiz','quizmaster_id');
+    }
+    public function answered_quizzes()
+    {
+        return $this->hasMany('App\Quiz','examiner_id');
+    }
+
+    public function isAdmin()
+    {
+        return $this->role =='admin' ? true : false;
     }
 }

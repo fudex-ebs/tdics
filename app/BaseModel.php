@@ -1,10 +1,10 @@
 <?php
 
 namespace App;
-use Auth;
-use Validator;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
+use Validator;
 
 class BaseModel extends Model
 {
@@ -23,7 +23,6 @@ class BaseModel extends Model
             return false;
         }
 
-        // validation pass
         return true;
     }
     public function errors($returnArray = true)

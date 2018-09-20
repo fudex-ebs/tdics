@@ -8,11 +8,17 @@ class Quiz extends BaseModel
 {
 	protected $fillable = [
         'slug',
-        'user_id',
+        'quizmaster_id',
+        'examiner_id',
+        'used'
     ];
-    public function user()
+    public function examiner()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','examiner_id');
+    }
+    public function quizmaster()
+    {
+        return $this->belongsTo('App\User','quizmaster_id');
     }
     public function answers()
     {
