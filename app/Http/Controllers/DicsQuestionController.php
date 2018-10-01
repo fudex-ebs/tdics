@@ -22,43 +22,29 @@ class DicsQuestionController extends Controller
 
     	$dics_question = new DicsQuestion();
     	if($dics_question->validate($request->all()) ){
-    		$dics_question->slug = uniqid();
-    		$dics_question->content_ar = $request->get('content_ar');
-    		$dics_question->content_en = $request->get('content_en');
-    		$dics_question->option_d_ar = $request->get('option_d_ar');
-    		$dics_question->option_d_en = $request->get('option_d_en');
-    		$dics_question->option_i_ar = $request->get('option_i_ar');
-    		$dics_question->option_i_en = $request->get('option_i_en');
-    		$dics_question->option_s_ar = $request->get('option_s_ar');
-    		$dics_question->option_s_en = $request->get('option_s_en');
-    		$dics_question->option_c_ar = $request->get('option_c_ar');
-    		$dics_question->option_c_en = $request->get('option_c_en');
-    		$dics_question->quiz_type = 'role_assessment';
-    		$dics_question->save();
+            $data = array_merge([
+               'slug' => uniqid(),
+               'quiz_type' => 'role_assessment'
+            ], $request->all());
+            DicsQuestion::create($data);
     	}else{
     		return $dics_question->errors();
     	}
-    	return redirect()->route('dics_question_index');
+    	return redirect()->route('ra_question.index');
     }
     // store dics personal coaching questions 
     public function store_pc_questions(Request $request){
 
         $dics_question = new DicsQuestion();
         if($dics_question->validate($request->all()) ){
-            $dics_question->slug = uniqid();
-            $dics_question->option_d_ar = $request->get('option_d_ar');
-            $dics_question->option_d_en = $request->get('option_d_en');
-            $dics_question->option_i_ar = $request->get('option_i_ar');
-            $dics_question->option_i_en = $request->get('option_i_en');
-            $dics_question->option_s_ar = $request->get('option_s_ar');
-            $dics_question->option_s_en = $request->get('option_s_en');
-            $dics_question->option_c_ar = $request->get('option_c_ar');
-            $dics_question->option_c_en = $request->get('option_c_en');
-            $dics_question->quiz_type = 'personal_coaching';
-            $dics_question->save();
+            $data = array_merge([
+               'slug' => uniqid(),
+               'quiz_type' => 'personal_coaching'
+            ], $request->all());
+            DicsQuestion::create($data);
         }else{
             return $dics_question->errors();
         }
-        return redirect()->route('dics_question_index');
+        return redirect()->route('pc_question.index');
     }
 }

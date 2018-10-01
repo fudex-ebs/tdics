@@ -10,6 +10,7 @@ class Quiz extends BaseModel
         'slug',
         'quizmaster_id',
         'examiner_id',
+        'type',
         'used'
     ];
     public function examiner()

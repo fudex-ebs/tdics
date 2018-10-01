@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.individual')
 
 @section('content')
 <div class="container">
@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"> 
-                <form  action="{{route('quiz_store')}}" method="POST">
+                <form  action="{{route('pc_code.generate')}}" method="POST">
                   @csrf
                   <button class="btn btn-primary" >اضافة کود</button>
                   
@@ -27,6 +27,7 @@
                           <th scope="col">#</th>
                           <th scope="col">quiz_code</th>
                           <th scope="col">used</th>
+                          <th></th>
                           
                         </tr>
                       </thead>
@@ -34,10 +35,10 @@
                         @foreach($quizzes as $count => $quiz)
                         <tr>
 
-                          <th scope="row">{{$count}}</th>
+                          <th scope="row">{{$count+1}}</th>
                           <td>{{$quiz->slug}}</td>
-                          <td>{{$quiz->used}}</td>
-                          
+                          <td>{{$quiz->used ? 'yest':'no'}}</td>
+                          <td><a href="{{ route('answer_pc_quiz',$quiz->slug) }}">answer</a></td>
                         </tr>
                         @endforeach
                       </tbody>

@@ -31,10 +31,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        
-                    </ul>
+                   
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -65,7 +62,21 @@
                                 </div>
                             </li>
                         @endguest
-                       
+                        @if(Auth::check() && Auth::user()->isAdmin())
+                        <li class="nav-item dropdown">
+                            <a  class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                questions <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" >
+                                <a class="dropdown-item" href="{{route('pc_question.index')}}">personal coaching</a>
+                                <a class="dropdown-item" href="{{route('ra_question.index')}}">role assessment </a>
+                               
+
+                                
+                            </div>
+                        </li>
+                        @endif
                     </ul>
                 </div>
             </div>

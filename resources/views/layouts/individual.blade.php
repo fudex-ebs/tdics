@@ -33,7 +33,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        
+                        @auth
+                        <li class="nav-item dropdown">
+                            <a  class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                quiz <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" >
+                                <a class="dropdown-item" href="{{route('user.pc_quizzes')}}">my codes</a>
+                                <a class="dropdown-item" href="{{route('user.answered_pc_quizzes')}}">my quizzes</a>
+
+                                
+                            </div>
+                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -65,7 +78,7 @@
                                 </div>
                             </li>
                         @endguest
-                       
+                        
                     </ul>
                 </div>
             </div>
