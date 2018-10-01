@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -28,8 +28,8 @@
                         @foreach($dics_questions as $count => $question)
                         <tr>
 
-                          <th scope="row">{{$count}}</th>
-                          <td>{{$question->content_ar}}</td>
+                          <th scope="row">{{$count+1}}</th>
+                          <td>{{$question->content_en}}</td>
                           
                         </tr>
                         @endforeach
@@ -50,11 +50,19 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="{{ route('ra_question_store') }}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('ra_question.store') }}" enctype="multipart/form-data">
       <div class="modal-body">
-        
+          
             <input type='hidden' name='_token' value="{!! csrf_token() !!}">
             <div class="row">
+            <div class="form-group col-md-12">
+                  <label>السوال</label>
+                  <input type="text" name="content_ar" class="form-control" >
+              </div>
+              <div class="form-group col-md-12">
+                  <label>question</label>
+                  <input type="text" name="content_en" class="form-control" >
+              </div>
               <div class="form-group col-md-3">
                   <label>خيار D </label>
                   <input type="text" name="option_d_ar" class="form-control" >

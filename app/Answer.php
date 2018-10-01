@@ -18,7 +18,7 @@ class Answer extends BaseModel
         return $this->belongsTo('App\User');
     }
 
-    public function dick_question()
+    public function dics_question()
     {
         return $this->belongsTo('App\DiscQuestion');
     }

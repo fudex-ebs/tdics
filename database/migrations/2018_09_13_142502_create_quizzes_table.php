@@ -18,6 +18,7 @@ class CreateQuizzesTable extends Migration
             $table->string('slug');
             $table->integer('quizmaster_id');
             $table->integer('examiner_id')->nullable();
+            $table->string('type');
             $table->boolean('used');
             $table->timestamps();
         });

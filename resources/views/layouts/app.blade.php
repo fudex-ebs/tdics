@@ -33,20 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        @auth
-                        <li class="nav-item dropdown">
-                            <a  class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                quiz <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" >
-                                <a class="dropdown-item" href="{{route('created_quizzes')}}">my codes</a>
-                                <a class="dropdown-item" href="{{route('answered_quizzes')}}">my quizzes</a>
-
-                                
-                            </div>
-                        </li>
-                        @endauth
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -78,21 +65,7 @@
                                 </div>
                             </li>
                         @endguest
-                        @if(Auth::check() && Auth::user()->isAdmin())
-                        <li class="nav-item dropdown">
-                            <a  class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                questions <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" >
-                                <a class="dropdown-item" href="{{route('pc_question_index')}}">personal coaching</a>
-                                <a class="dropdown-item" href="{{route('ra_question_index')}}">role assessment </a>
-                               
-
-                                
-                            </div>
-                        </li>
-                        @endif
+                       
                     </ul>
                 </div>
             </div>
